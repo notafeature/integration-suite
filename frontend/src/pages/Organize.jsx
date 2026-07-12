@@ -34,7 +34,7 @@ function ScheduleForm({ slug, onDone }) {
       <label className="flex flex-col gap-1"><span className="label text-ink-soft">Exact location (approved only)</span>
         <input value={form.exact_location} onChange={set("exact_location")} placeholder="Full address" className="border border-line px-3 py-2 text-sm outline-none focus:border-orient" /></label>
       <div className="sm:col-span-2">
-        <button disabled={busy} data-testid="meeting-submit" className="bg-clay px-5 py-2.5 text-sm font-medium text-canvas hover:bg-clay-deep disabled:opacity-60">
+        <button disabled={busy} data-testid="meeting-submit" className="bg-ink px-5 py-2.5 text-sm font-medium text-canvas hover:bg-ink/90 disabled:opacity-60">
           {busy ? "Scheduling…" : "Schedule meeting"}
         </button>
       </div>
@@ -73,10 +73,10 @@ export default function Organize() {
     <div className="mx-auto max-w-5xl px-5 py-16 sm:px-8">
       <div className="flex items-end justify-between">
         <div>
-          <p className="label text-clay-deep">For circle-keepers</p>
+          <p className="label text-orient-deep">For circle-keepers</p>
           <h1 className="mt-4 font-display text-4xl tracking-tight sm:text-5xl" style={{ fontWeight: 450 }}>Hold the space.</h1>
         </div>
-        <Link to="/start" data-testid="new-circle-btn" className="inline-flex items-center gap-1.5 bg-clay px-5 py-2.5 text-sm font-medium text-canvas hover:bg-clay-deep">
+        <Link to="/start" data-testid="new-circle-btn" className="inline-flex items-center gap-1.5 bg-ink px-5 py-2.5 text-sm font-medium text-canvas hover:bg-ink/90">
           <Plus size={15} /> New circle
         </Link>
       </div>

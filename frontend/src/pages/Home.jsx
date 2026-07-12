@@ -483,7 +483,7 @@ export default function Home() {
               >
                 <p className="label text-orient-deep">{region?.label} · and growing</p>
                 <h1 className="mt-6 font-display text-5xl leading-[1.03] tracking-tight sm:text-6xl" style={{ fontWeight: 450 }}>
-                  Find the circle<br />you can <em style={{ color: "var(--clay)", fontWeight: 400 }}>enter.</em>
+                  Find the circle<br />you can <em style={{ color: "var(--orient-deep)", fontWeight: 400 }}>enter.</em>
                 </h1>
                 <p className="mt-7 max-w-md leading-relaxed text-ink-soft">
                   Small, steady, in-person groups for making sense of a psychedelic experience after it ends.

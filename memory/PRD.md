@@ -48,6 +48,17 @@ approved = completed line + details revealed). Ported from the "Cairn" scaffold 
 - ✅ Legal/boundaries page. White-label config endpoint.
 - ✅ Tested: 35/35 backend pytest pass; all critical frontend flows verified.
 
+## Iteration 2 (palette + architecture, per user feedback)
+- ✅ **Vibe de-coupled from the "warm-cream + terracotta + soft-serif" look.** Cooled all
+  neutrals so #FAFAF8 reads as a clean near-white; clay demoted to the RSVP/connection moment
+  only; slate blue-grey elevated as the connective/orientation accent; display face → Newsreader;
+  near-invisible neutral grain. Generic action buttons are near-black; clay reserved for "join".
+- ✅ **CORS pinned** to the frontend origin via `CORS_ORIGINS` env (wildcard only as dev fallback).
+- ✅ **Backend refactored** from one server.py into `common.py` + `routers/` (meta, auth,
+  discovery, meetings, rsvps, resources, notifications). 35/35 tests still pass.
+- ✅ `/app/FUTURE_IDEAS.md` added (admin metrics/dashboards, directory vetting workflow,
+  ultra-secure circle-scoped message board spec, payments, reminders, native wrap).
+
 ## Backlog / next
 - P1: Meeting **reminder** notifications (scheduler/cron) — type exists, not yet triggered on a timer.
 - P1: Wire real Resend email (add key) + email templates.

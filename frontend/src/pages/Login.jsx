@@ -52,13 +52,13 @@ export default function Login() {
         </label>
         {err && <p className="text-sm text-clay" data-testid="login-error">{err}</p>}
         <button type="submit" disabled={busy} data-testid="login-submit"
-          className="mt-1 bg-clay py-3 text-sm font-medium text-canvas transition-colors hover:bg-clay-deep disabled:opacity-60">
+          className="mt-1 bg-ink py-3 text-sm font-medium text-canvas transition-colors hover:bg-ink/90 disabled:opacity-60">
           {busy ? "Signing in…" : "Sign in"}
         </button>
       </form>
 
       <p className="mt-6 text-sm text-ink-soft">
-        New here? <Link to="/register" className="text-clay-deep underline underline-offset-4">Create an account</Link>
+        New here? <Link to="/register" className="text-orient-deep underline underline-offset-4">Create an account</Link>
       </p>
     </div>
   );

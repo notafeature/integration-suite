@@ -40,7 +40,7 @@ export default function StartCircle() {
 
   return (
     <div className="mx-auto max-w-2xl px-5 py-16 sm:px-8">
-      <p className="label text-clay-deep">Start a circle</p>
+      <p className="label text-orient-deep">Start a circle</p>
       <h1 className="mt-4 font-display text-4xl tracking-tight sm:text-5xl" style={{ fontWeight: 450 }}>Put your circle on the field.</h1>
       <p className="mt-5 text-ink-soft">
         Already holding space? List your circle so people nearby can find and request to join it. You approve every attendee, and exact locations stay private until you do.
@@ -80,7 +80,7 @@ export default function StartCircle() {
 
         {err && <p className="text-sm text-clay sm:col-span-2" data-testid="start-error">{err}</p>}
         <div className="sm:col-span-2">
-          <button type="submit" disabled={busy} data-testid="circle-submit" className="bg-clay px-6 py-3 text-sm font-medium text-canvas hover:bg-clay-deep disabled:opacity-60">
+          <button type="submit" disabled={busy} data-testid="circle-submit" className="bg-ink px-6 py-3 text-sm font-medium text-canvas hover:bg-ink/90 disabled:opacity-60">
             {busy ? "Creating…" : "Create circle"}
           </button>
         </div>

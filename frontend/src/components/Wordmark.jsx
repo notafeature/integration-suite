@@ -4,7 +4,7 @@ import { useConfig } from "../context/ConfigContext";
 /** Abstract stacked-marker mark + configurable wordmark (the cairn: stones marking the trail down). */
 export function Wordmark({ className = "", onDark = false }) {
   const { brand } = useConfig();
-  const color = onDark ? "#FAFAF8" : "var(--clay)";
+  const color = onDark ? "#FAFAF8" : "var(--ink)";
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
       <svg width="20" height="26" viewBox="0 0 22 26" fill="none" aria-hidden="true" className="shrink-0">

@@ -52,13 +52,13 @@ export default function Register() {
         </label>
         {err && <p className="text-sm text-clay" data-testid="register-error">{err}</p>}
         <button type="submit" disabled={busy} data-testid="register-submit"
-          className="mt-1 bg-clay py-3 text-sm font-medium text-canvas transition-colors hover:bg-clay-deep disabled:opacity-60">
+          className="mt-1 bg-ink py-3 text-sm font-medium text-canvas transition-colors hover:bg-ink/90 disabled:opacity-60">
           {busy ? "Creating…" : "Create account"}
         </button>
       </form>
 
       <p className="mt-6 text-sm text-ink-soft">
-        Already have an account? <Link to="/login" className="text-clay-deep underline underline-offset-4">Sign in</Link>
+        Already have an account? <Link to="/login" className="text-orient-deep underline underline-offset-4">Sign in</Link>
       </p>
     </div>
   );

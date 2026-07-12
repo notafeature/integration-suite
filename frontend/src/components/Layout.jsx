@@ -64,12 +64,12 @@ export function Header() {
                 )}
               </Link>
               <span className="label text-ink-soft">{user.name?.split(" ")[0]}</span>
-              <button onClick={logout} data-testid="logout-btn" className="label text-ink-soft hover:text-clay">Sign out</button>
+              <button onClick={logout} data-testid="logout-btn" className="label text-ink-soft hover:text-ink">Sign out</button>
             </>
           ) : (
             <>
               <Link to="/login" data-testid="nav-signin" className="label text-ink-soft hover:text-ink">Sign in</Link>
-              <Link to="/start" data-testid="nav-host" className="label border border-ink/25 px-4 py-2 transition-colors hover:border-clay hover:text-clay">
+              <Link to="/start" data-testid="nav-host" className="label border border-ink/25 px-4 py-2 transition-colors hover:border-ink hover:text-ink">
                 Host a circle
               </Link>
             </>
@@ -112,8 +112,8 @@ export function Footer() {
       <div className="mx-auto flex max-w-[1400px] flex-col gap-4 px-5 py-8 text-sm text-ink-soft sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <p className="font-display italic">“We don't walk this path alone. We walk it together.”</p>
         <div className="flex flex-wrap items-center gap-5">
-          <Link to="/legal" className="hover:text-clay" data-testid="footer-legal">Boundaries</Link>
-          <Link to="/directory" className="hover:text-clay">Directory</Link>
+          <Link to="/legal" className="hover:text-ink" data-testid="footer-legal">Boundaries</Link>
+          <Link to="/directory" className="hover:text-ink">Directory</Link>
           <span className="text-ink-soft/70">{entity?.name}</span>
         </div>
       </div>

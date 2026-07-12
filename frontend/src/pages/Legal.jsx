@@ -34,8 +34,7 @@ export default function Legal() {
       <div className="mt-14 flex flex-col divide-y divide-line border-t border-line">
         {SECTIONS.map((s) => (
           <div key={s.n} className="grid gap-2 py-8 sm:grid-cols-[3rem_1fr]" data-testid={`legal-${s.n}`}>
-            <span className="font-display text-clay">{s.n}</span>
-            <div>
+            <span className="font-display text-clay">{s.n}</span>            <div>
               <h2 className="font-display text-2xl" style={{ fontWeight: 500 }}>{s.title}</h2>
               <p className="mt-3 leading-relaxed text-ink-soft">{s.body}</p>
             </div>

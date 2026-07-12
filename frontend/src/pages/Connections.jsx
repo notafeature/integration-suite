@@ -23,7 +23,7 @@ export default function Connections() {
       <p className="mt-5 text-ink-soft">Every circle you've asked to join, and where each request stands.</p>
 
       {loading ? <p className="mt-12 text-ink-soft">Loading…</p> : items.length === 0 ? (
-        <p className="mt-12 text-ink-soft" data-testid="no-connections">No connections yet. <Link to="/" className="text-clay-deep underline underline-offset-4">Enter the field</Link> and find a circle.</p>
+        <p className="mt-12 text-ink-soft" data-testid="no-connections">No connections yet. <Link to="/" className="text-orient-deep underline underline-offset-4">Enter the field</Link> and find a circle.</p>
       ) : (
         <div className="mt-10 divide-y divide-line border-t border-line" data-testid="connections-list">
           {items.map((it, i) => {
