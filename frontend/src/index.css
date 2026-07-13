@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ---- Palette presets (channels, space-separated RGB) ---- */
+/* ---- Field palette (channels, space-separated RGB) — the only preset ---- */
 :root {
   --c-canvas: 250 250 248;   /* #FAFAF8 — the whole canvas, as specified */
   --c-panel: 243 243 241;
@@ -19,23 +19,7 @@
   --c-violet: 132 124 152;
   --c-violet-deep: 100 92 120;
 }
-:root[data-theme="warm"] {
-  --c-canvas: 247 244 236;   /* warmer paper — A/B option */
-  --c-panel: 240 234 222;
-  --c-panel-deep: 231 223 206;
-  --c-ink: 34 30 24;
-  --c-ink-soft: 108 99 84;
-  --c-line: 225 217 201;
-  --c-orient: 110 124 145;
-  --c-orient-deep: 74 88 110;
-  --c-amber: 199 138 64;
-  --c-amber-deep: 160 103 36;
-  --c-clay: 181 82 42;
-  --c-clay-deep: 140 60 30;
-  --c-violet: 138 128 150;
-  --c-violet-deep: 108 98 120;
-}
-/* aliases for inline style="var(--x)" usage — follow the active preset */
+/* aliases for inline style="var(--x)" usage */
 :root {
   --canvas: rgb(var(--c-canvas));
   --ink: rgb(var(--c-ink));
@@ -85,6 +69,22 @@ body::before {
 
 .thin-scroll::-webkit-scrollbar { width: 6px; }
 .thin-scroll::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
+
+/* Atmosphere: near-still. A slow lateral drift and a long breath. */
+@keyframes atmo-drift {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-0.5%); }
+}
+.atmo-drift { animation: atmo-drift 90s ease-in-out infinite; }
+@keyframes atmo-breathe {
+  0%, 100% { opacity: 0.05; }
+  50% { opacity: 0.075; }
+}
+.atmo-breathe { animation: atmo-breathe 45s ease-in-out infinite; }
+.atmo-breathe text, .atmo-drift text { fill: currentColor; stroke: none; }
+@media (prefers-reduced-motion: reduce) {
+  .atmo-drift, .atmo-breathe { animation: none; }
+}
 
 @keyframes breathe {
   0%, 100% { opacity: 0.4; transform: scale(1); }

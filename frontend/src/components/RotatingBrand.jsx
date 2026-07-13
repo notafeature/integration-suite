@@ -60,6 +60,7 @@ export function RotatingBrand({ className = "", localeOverride }) {
   const timerRef = useRef(null);
   const lastStepRef = useRef(0);
   const durRef = useRef(0.3);
+  const blurRef = useRef(1.5);
   const rescheduleRef = useRef(null);
 
   useEffect(() => {
@@ -87,8 +88,9 @@ export function RotatingBrand({ className = "", localeOverride }) {
       const energy = decayedEnergy(now);
       const next = (indexRef.current + 1) % lenRef.current;
       indexRef.current = next;
-      // Word transitions tighten as the cycle speeds up.
+      // Word transitions tighten and blur as the cycle speeds up.
       durRef.current = 0.3 - 0.18 * energy;
+      blurRef.current = 1.5 + 8 * energy;
       lastStepRef.current = now;
       setI(next);
       timerRef.current = setTimeout(step, dwellFor(next, energy));
@@ -152,9 +154,9 @@ export function RotatingBrand({ className = "", localeOverride }) {
         <AnimatePresence mode="popLayout" initial={false}>
           <motion.span
             key={i}
-            initial={{ y: "105%", opacity: 0 }}
-            animate={{ y: "0%", opacity: 1 }}
-            exit={{ y: "-105%", opacity: 0 }}
+            initial={{ y: "105%", opacity: 0, filter: `blur(${blurRef.current}px)` }}
+            animate={{ y: "0%", opacity: 1, filter: "blur(0px)" }}
+            exit={{ y: "-105%", opacity: 0, filter: `blur(${blurRef.current}px)` }}
             transition={{ duration: durRef.current, ease: [0.22, 0.61, 0.36, 1] }}
             className="inline-block font-display whitespace-nowrap"
             style={{ color: i === brandIndex ? BRAND_COLOR : COLORS[i % COLORS.length], fontWeight: 460 }}

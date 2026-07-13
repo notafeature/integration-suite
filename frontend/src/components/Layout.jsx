@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Bell, Menu, X } from "lucide-react";
 import { Wordmark } from "./Wordmark";
-import { WatercolorBand } from "./WatercolorBand";
+import { Atmosphere } from "./Atmosphere";
 import { useAuth } from "../context/AuthContext";
-import { useConfig } from "../context/ConfigContext";
 import api from "../lib/api";
 
 const nav = [
@@ -106,30 +105,14 @@ export function Header() {
   );
 }
 
-function ThemeToggle() {
-  const [t, setT] = useState(document.documentElement.dataset.theme || "field");
-  const set = (v) => { document.documentElement.dataset.theme = v; localStorage.setItem("cultivate_theme", v); setT(v); };
-  return (
-    <span className="label flex items-center gap-2" data-testid="theme-toggle">
-      <span className="text-ink-soft/50">Palette</span>
-      <button onClick={() => set("field")} data-testid="theme-field" className={t === "field" ? "text-ink" : "text-ink-soft/60 hover:text-ink"}>Field</button>
-      <span className="text-ink-soft/30">/</span>
-      <button onClick={() => set("warm")} data-testid="theme-warm" className={t === "warm" ? "text-ink" : "text-ink-soft/60 hover:text-ink"}>Warm</button>
-    </span>
-  );
-}
-
 export function Footer() {
-  const { entity } = useConfig();
   return (
-    <footer className="border-t border-line">
+    <footer className="relative border-t border-line">
       <div className="mx-auto flex max-w-[1400px] flex-col gap-4 px-5 py-8 text-sm text-ink-soft sm:flex-row sm:items-center sm:justify-between sm:px-8">
-        <p className="font-display italic">“We don't walk this path alone. We walk it together.”</p>
+        <p className="font-display italic">“Healing happens in relationship. Integration happens in community.”</p>
         <div className="flex flex-wrap items-center gap-5">
-          <ThemeToggle />
           <Link to="/legal" className="hover:text-ink" data-testid="footer-legal">Boundaries</Link>
           <Link to="/directory" className="hover:text-ink">Directory</Link>
-          <span className="text-ink-soft/70">{entity?.name}</span>
         </div>
       </div>
     </footer>
@@ -139,9 +122,9 @@ export function Footer() {
 export function Layout({ children, full = false }) {
   return (
     <div className="flex min-h-full flex-col">
+      <Atmosphere />
       <Header />
-      <main className={full ? "flex-1" : "flex-1"}>{children}</main>
-      <WatercolorBand />
+      <main className="relative z-10 flex-1">{children}</main>
       <Footer />
     </div>
   );
