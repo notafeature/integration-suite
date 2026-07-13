@@ -2,9 +2,11 @@ import axios from "axios";
 
 const BACKEND = process.env.REACT_APP_BACKEND_URL;
 
+// Bearer-token auth (no cookies) — avoids the ingress rewriting
+// Access-Control-Allow-Origin to "*", which browsers reject with credentials.
 const api = axios.create({
   baseURL: `${BACKEND}/api`,
-  withCredentials: true,
+  withCredentials: false,
 });
 
 const saved = localStorage.getItem("cultivate_token");

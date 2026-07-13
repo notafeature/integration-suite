@@ -2,17 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---- Palette presets (channels, space-separated RGB) ---- */
 :root {
-  --canvas: #FAFAF8;
-  --ink: #17181A;
-  --ink-soft: #62636A;
-  --orient: #6C7C93;
-  --orient-deep: #47566C;
-  --amber: #C0894A;
-  --amber-deep: #9E6A2C;
-  --clay: #A8482A;
-  --violet: #857E97;
-  --line: #E4E3DF;
+  --c-canvas: 250 250 248;   /* #FAFAF8 — the whole canvas, as specified */
+  --c-panel: 243 243 241;
+  --c-panel-deep: 233 233 230;
+  --c-ink: 23 24 26;
+  --c-ink-soft: 96 97 104;
+  --c-line: 227 226 221;
+  --c-orient: 104 122 148;
+  --c-orient-deep: 66 82 106;
+  --c-amber: 197 137 66;
+  --c-amber-deep: 158 104 40;
+  --c-clay: 173 74 40;
+  --c-clay-deep: 128 52 26;
+  --c-violet: 132 124 152;
+  --c-violet-deep: 100 92 120;
+}
+:root[data-theme="warm"] {
+  --c-canvas: 247 244 236;   /* warmer paper — A/B option */
+  --c-panel: 240 234 222;
+  --c-panel-deep: 231 223 206;
+  --c-ink: 34 30 24;
+  --c-ink-soft: 108 99 84;
+  --c-line: 225 217 201;
+  --c-orient: 110 124 145;
+  --c-orient-deep: 74 88 110;
+  --c-amber: 199 138 64;
+  --c-amber-deep: 160 103 36;
+  --c-clay: 181 82 42;
+  --c-clay-deep: 140 60 30;
+  --c-violet: 138 128 150;
+  --c-violet-deep: 108 98 120;
+}
+/* aliases for inline style="var(--x)" usage — follow the active preset */
+:root {
+  --canvas: rgb(var(--c-canvas));
+  --ink: rgb(var(--c-ink));
+  --ink-soft: rgb(var(--c-ink-soft));
+  --orient: rgb(var(--c-orient));
+  --orient-deep: rgb(var(--c-orient-deep));
+  --amber: rgb(var(--c-amber));
+  --amber-deep: rgb(var(--c-amber-deep));
+  --clay: rgb(var(--c-clay));
+  --clay-deep: rgb(var(--c-clay-deep));
+  --violet: rgb(var(--c-violet));
+  --violet-deep: rgb(var(--c-violet-deep));
+  --line: rgb(var(--c-line));
 }
 
 html, body, #root { height: 100%; }
@@ -26,16 +62,15 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-::selection { background: var(--orient); color: var(--canvas); }
+::selection { background: var(--clay); color: var(--canvas); }
 
-/* Near-invisible neutral grain — texture, not warmth */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 100;
-  opacity: 0.02;
+  opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -52,8 +87,8 @@ body::before {
 .thin-scroll::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
 
 @keyframes breathe {
-  0%, 100% { opacity: 0.35; transform: scale(1); }
-  50% { opacity: 0.8; transform: scale(1.06); }
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.06); }
 }
 .breathe { animation: breathe 4.5s ease-in-out infinite; }
 

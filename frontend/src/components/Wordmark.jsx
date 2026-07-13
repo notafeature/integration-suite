@@ -14,7 +14,7 @@ export function Wordmark({ className = "", onDark = false }) {
         <ellipse cx="10.8" cy="5.4" rx="3.5" ry="2.1" fill={color} opacity="0.45" />
       </svg>
       <span className="font-display text-[1.05rem] tracking-tight" style={{ fontWeight: 560, color: onDark ? "#FAFAF8" : "var(--ink)" }}>
-        {brand?.short || "Cultivate"}
+        {brand?.name || "Cultivate Santa Fe"}
       </span>
     </span>
   );

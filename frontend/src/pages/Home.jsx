@@ -80,7 +80,7 @@ function SpatialField({ field, onOpenLocation, onOpenCircle }) {
           if (!online || loc.kind === "online") return null;
           const a = px(FIELD_POS[i % FIELD_POS.length]);
           const b = px(FIELD_POS[locations.indexOf(online) % FIELD_POS.length]);
-          const op = 0.05 + 0.35 * Math.max(attn(FIELD_POS[i % FIELD_POS.length]), attn(FIELD_POS[locations.indexOf(online) % FIELD_POS.length]));
+          const op = 0.1 + 0.32 * Math.max(attn(FIELD_POS[i % FIELD_POS.length]), attn(FIELD_POS[locations.indexOf(online) % FIELD_POS.length]));
           return <line key={loc.id} x1={a.left} y1={a.top} x2={b.left} y2={b.top} stroke="#B9B3A4" strokeWidth="1" opacity={op} />;
         })}
         {(level === "location" || level === "circle") && circlePos.map((cp, i) => {
@@ -139,15 +139,15 @@ function SpatialField({ field, onOpenLocation, onOpenCircle }) {
             <span className="relative flex items-center justify-center rounded-full"
               style={{ width: rBase * 2, height: rBase * 2 }}>
               <span className={`absolute inset-0 rounded-full border ${loc.temporal === "imminent" ? "breathe" : ""}`}
-                style={{ borderColor: tone, opacity: level === "field" ? 0.35 + a * 0.55 : 0.5 }} />
-              {level === "field" && a > 0.15 && (
-                <span className="absolute inset-[6px] rounded-full" style={{ background: tone, opacity: a * 0.05 }} />
+                style={{ borderColor: tone, borderWidth: loc.temporal ? 1.5 : 1, opacity: level === "field" ? (loc.temporal ? 0.7 : 0.42) + a * 0.3 : 0.5 }} />
+              {level === "field" && (loc.temporal || a > 0.12) && (
+                <span className="absolute inset-[6px] rounded-full" style={{ background: tone, opacity: (loc.temporal ? 0.08 : 0) + a * 0.06 }} />
               )}
               <span className="flex flex-col items-center text-center">
-                <span className="font-display leading-none" style={{ fontWeight: 480, fontSize: 18 - (level !== "field" ? 3 : 0), opacity: level === "field" ? 0.35 + a * 0.65 : 0.7 }}>
+                <span className="font-display leading-none" style={{ fontWeight: 480, fontSize: 18 - (level !== "field" ? 3 : 0), opacity: level === "field" ? 0.55 + a * 0.45 : 0.75 }}>
                   {loc.label}
                 </span>
-                <span className="mt-1 text-[11px] text-ink-soft" style={{ opacity: level === "field" ? 0.25 + a * 0.7 : 0.6 }}>
+                <span className="mt-1 text-[11px] text-ink-soft" style={{ opacity: level === "field" ? 0.4 + a * 0.55 : 0.6 }}>
                   {loc.group_count} {loc.group_count === 1 ? "circle" : "circles"}
                 </span>
                 {level === "field" && temporalMeta(loc.temporal) && a > 0.35 && (
@@ -184,8 +184,8 @@ function SpatialField({ field, onOpenLocation, onOpenCircle }) {
           >
             <span className="relative flex items-center justify-center rounded-full" style={{ width: r * 2, height: r * 2 }}>
               <span className={`absolute inset-0 rounded-full border ${c.temporal === "imminent" ? "breathe" : ""}`}
-                style={{ borderColor: tone, opacity: 0.4 + a * 0.5 }} />
-              <span className="absolute inset-[7px] rounded-full" style={{ background: tone, opacity: 0.04 + a * 0.06 }} />
+                style={{ borderColor: tone, borderWidth: c.temporal ? 1.5 : 1, opacity: (c.temporal ? 0.7 : 0.45) + a * 0.35 }} />
+              <span className="absolute inset-[7px] rounded-full" style={{ background: tone, opacity: (c.temporal ? 0.07 : 0.02) + a * 0.06 }} />
               <span className="max-w-[112px] px-2 text-center font-display leading-tight" style={{ fontWeight: 470, fontSize: 14, opacity: 0.55 + a * 0.45 }}>
                 {c.name}
               </span>

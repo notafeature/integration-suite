@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Eye, EyeOff } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
+import { RotatingBrand } from "../components/RotatingBrand";
 
 export default function Register() {
   const { register, googleLogin } = useAuth();
@@ -8,6 +10,7 @@ export default function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPw, setShowPw] = useState(false);
   const [err, setErr] = useState("");
   const [busy, setBusy] = useState(false);
 
@@ -21,9 +24,11 @@ export default function Register() {
 
   return (
     <div className="mx-auto flex max-w-md flex-col px-5 py-20">
-      <p className="label text-orient-deep">Join the community</p>
-      <h1 className="mt-4 font-display text-4xl tracking-tight" style={{ fontWeight: 460 }}>Find your people.</h1>
-      <p className="mt-3 text-sm text-ink-soft">This is integration space — for what comes after an experience. Never a source of access.</p>
+      <p className="label text-orient-deep">Join</p>
+      <h1 className="mt-3 text-4xl tracking-tight sm:text-5xl">
+        <RotatingBrand />
+      </h1>
+      <p className="mt-4 text-sm text-ink-soft">Integration space — for what comes after an experience. Never a source of access.</p>
 
       <div className="mt-8">
         <button onClick={googleLogin} data-testid="google-register-btn"
@@ -47,8 +52,14 @@ export default function Register() {
         </label>
         <label className="flex flex-col gap-1.5">
           <span className="label text-ink-soft">Password <span className="normal-case tracking-normal text-ink-soft/70">(8+ characters)</span></span>
-          <input data-testid="register-password" type="password" required minLength={8} value={password} onChange={(e) => setPassword(e.target.value)}
-            className="border border-line bg-white px-3.5 py-2.5 text-sm outline-none focus:border-orient" />
+          <div className="relative">
+            <input data-testid="register-password" type={showPw ? "text" : "password"} required minLength={8} value={password} onChange={(e) => setPassword(e.target.value)}
+              className="w-full border border-line bg-white px-3.5 py-2.5 pr-10 text-sm outline-none focus:border-orient" />
+            <button type="button" onClick={() => setShowPw((v) => !v)} data-testid="toggle-password"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-ink-soft hover:text-ink" aria-label={showPw ? "Hide password" : "Show password"}>
+              {showPw ? <EyeOff size={16} strokeWidth={1.5} /> : <Eye size={16} strokeWidth={1.5} />}
+            </button>
+          </div>
         </label>
         {err && <p className="text-sm text-clay" data-testid="register-error">{err}</p>}
         <button type="submit" disabled={busy} data-testid="register-submit"
