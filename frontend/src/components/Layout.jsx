@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Bell, Menu, X } from "lucide-react";
 import { Wordmark } from "./Wordmark";
+import { WatercolorBand } from "./WatercolorBand";
 import { useAuth } from "../context/AuthContext";
 import { useConfig } from "../context/ConfigContext";
 import api from "../lib/api";
@@ -140,6 +141,7 @@ export function Layout({ children, full = false }) {
     <div className="flex min-h-full flex-col">
       <Header />
       <main className={full ? "flex-1" : "flex-1"}>{children}</main>
+      <WatercolorBand />
       <Footer />
     </div>
   );
