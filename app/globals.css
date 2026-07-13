@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  /* High-desert palette: warm paper, ink-brown, clay, sage, dusk */
+  --color-paper: #f3ecdd;
+  --color-paper-deep: #eae0c9;
+  --color-ink: #26211a;
+  --color-ink-soft: #57503f;
+  --color-clay: #b0512b;
+  --color-clay-deep: #8a3c1e;
+  --color-sage: #6f7d62;
+  --color-dusk: #414d5c;
+
+  --font-display: var(--font-fraunces), "Georgia", serif;
+  --font-sans: var(--font-instrument), system-ui, sans-serif;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-clay);
+  color: var(--color-paper);
+}
+
+/* Subtle paper grain over the whole page */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Editorial micro-label: small caps, tracked out */
+.label {
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+}

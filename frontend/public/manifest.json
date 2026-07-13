@@ -1,0 +1,9 @@
+{
+  "short_name": "Cultivate",
+  "name": "Cultivate — Integration Circles",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#FAFAF8",
+  "background_color": "#FAFAF8"
+}
