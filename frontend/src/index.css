@@ -77,8 +77,8 @@ body::before {
 }
 .atmo-drift { animation: atmo-drift 90s ease-in-out infinite; }
 @keyframes atmo-breathe {
-  0%, 100% { opacity: 0.05; }
-  50% { opacity: 0.075; }
+  0%, 100% { opacity: 0.72; }
+  50% { opacity: 1; }
 }
 .atmo-breathe { animation: atmo-breathe 45s ease-in-out infinite; }
 .atmo-breathe text, .atmo-drift text { fill: currentColor; stroke: none; }

@@ -52,7 +52,18 @@ overwrite it.
 
 ## Running it
 
-Backend (needs MongoDB — real, Atlas, or an in-memory emulator for sandboxes):
+**Fastest path — one command, no MongoDB needed:**
+
+```bash
+./dev.sh    # backend :8001 (in-memory DB, seeded) + frontend :3000
+```
+
+Then open http://localhost:3000 and sign in as `organizer@cultivatesf.org`,
+`member@cultivatesf.org`, or `admin@cultivatesf.org` (password `Cultivate123!`).
+The in-memory database reseeds on every start; nothing persists between runs.
+
+**Manual path** — backend (needs MongoDB — real, Atlas, or an in-memory
+emulator for sandboxes):
 
 ```bash
 cd backend && pip install -r requirements.txt
