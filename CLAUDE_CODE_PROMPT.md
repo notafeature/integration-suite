@@ -6,6 +6,18 @@
 
 ---
 
+## ⭐ DO THIS FIRST (owner's explicit, top-priority directions)
+First tasks. Apply to the **rotating wordmark on BOTH sign-in and register**
+(`frontend/src/components/RotatingBrand.jsx`):
+1. **Slow down and PAUSE on each word**, then **continue** cycling (readable dwell
+   on every word — not a one-shot blur that just lands).
+2. Add **MORE words** (expand the C-word list).
+3. On **hover + mouse-move, react to the SPEED of pointer movement** (faster move →
+   faster cycling; slow/stop → settle).
+4. **Mobile deferred** ("a different day's issue") — don't block on it.
+5. **Owner is handling the hero personally** — coordinate, don't overwrite it.
+Detail in §8A. Ordering is unambiguous: **wordmark behavior first.**
+
 ## 0) Your role
 You are continuing an existing, working full-stack app. **Do not rebuild from
 scratch and do not regress decisions marked APPROVED.** The scaffolding,
